@@ -1,0 +1,97 @@
+
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neon Mart — Admin</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="brand">
+      <img class="logo" src="assets/logo.svg" alt="Logo">
+      <div>
+        <div style="font-weight:800">Neon Mart</div>
+        <div class="mini" style="color:var(--text-2);font-size:.9rem">Panel Admin</div>
+      </div>
+    </div>
+    <div class="actions">
+      <a class="btn outline" href="index.html">Etalase</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="card-body">
+        <h2 style="margin:.2rem 0 1rem"><span data-mode>Tambah Produk</span></h2>
+        <form id="form" class="form">
+          <div class="field col-6">
+            <label class="label">Judul</label>
+            <input name="title" class="input" required placeholder="Nama produk">
+          </div>
+          <div class="field col-6">
+            <label class="label">Harga (IDR)</label>
+            <input name="price" class="input" type="number" required min="0" step="1000">
+          </div>
+          <div class="field col-6">
+            <label class="label">Kategori</label>
+            <input name="category" class="input" required placeholder="Mis. Audio, Home">
+          </div>
+          <div class="field col-6">
+            <label class="label">URL Gambar</label>
+            <input name="image" class="input" placeholder="https://... atau biarkan kosong">
+            <div class="help">Kosongkan untuk pakai placeholder</div>
+          </div>
+          <div class="field col-6">
+            <label class="label">Stok</label>
+            <input name="stock" class="input" type="number" required min="0">
+          </div>
+          <div class="field col-6" style="display:flex;align-items:center;gap:10px;margin-top:20px">
+            <input id="featured" name="featured" type="checkbox">
+            <label for="featured">Tandai sebagai favorit</label>
+          </div>
+          <div class="field">
+            <label class="label">Deskripsi</label>
+            <textarea name="desc" class="input" rows="3" placeholder="Deskripsi singkat"></textarea>
+          </div>
+          <div class="field">
+            <button id="submit" class="btn" type="submit">Simpan</button>
+            <button class="btn outline" type="button" onclick="this.closest('form').reset()">Reset</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:18px">
+      <div class="card-body">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+          <h2 style="margin:0">Daftar Produk</h2>
+          <div style="display:flex;gap:10px">
+            <button id="export" class="btn">Ekspor</button>
+            <label class="btn outline" style="display:inline-block">
+              Impor <input id="import" type="file" accept="application/json" style="display:none">
+            </label>
+            <button id="seed" class="btn outline">Muat Sample</button>
+            <button id="clear" class="btn danger">Kosongkan</button>
+          </div>
+        </div>
+        <div style="overflow:auto">
+          <table class="table" style="min-width:760px;margin-top:10px">
+            <thead>
+              <tr>
+                <th>Gambar</th><th>Produk</th><th>Harga</th><th>Stok</th><th>Fav</th><th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" style="display:none"></div>
+
+  <script type="module" src="assets/admin.js"></script>
+</body>
+</html>

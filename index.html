@@ -1,0 +1,100 @@
+
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neon Mart — Toko Keren</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="brand">
+      <img class="logo" src="assets/logo.svg" alt="Logo">
+      <div>
+        <div style="font-weight:800">Neon Mart</div>
+        <div class="mini" style="color:var(--text-2);font-size:.9rem">Toko web responsif</div>
+      </div>
+    </div>
+    <div class="actions">
+      <a class="btn outline" href="admin.html">Admin</a>
+      <button id="btn-cart" class="btn">Keranjang</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="panel card">
+        <div class="card-body">
+          <div class="kicker">Selamat datang</div>
+          <h1>Belanja gaya masa kini, <span class="code">super ringan</span> & <span class="code">cepat</span>.</h1>
+          <p>Antarmuka elegan, dark mode nyaman, dan keranjang yang simpel. Semua data produk tersimpan lokal (LocalStorage), tanpa backend.</p>
+          <div style="display:flex;gap:10px;margin-top:10px">
+            <a class="btn" href="#etalase">Lihat Produk</a>
+            <a class="btn outline" href="admin.html">Kelola Produk</a>
+          </div>
+        </div>
+      </div>
+      <div class="panel card">
+        <div class="card-body">
+          <div class="kicker">Tips cepat</div>
+          <ul style="margin:0;padding-left:18px;color:var(--text-2)">
+            <li>Gunakan halaman <b>Admin</b> untuk <i>Tambah / Edit / Hapus</i> produk.</li>
+            <li>Ekspor & impor data produk (.json) kapan saja.</li>
+            <li>Semua berjalan di sisi klien — cukup upload folder ini ke hosting statis.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="etalase" class="card">
+      <div class="card-body">
+        <div class="toolbar">
+          <input id="search" class="input" type="search" placeholder="Cari produk...">
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+            <div class="select-wrap">
+              <select id="category" class="input select"></select>
+            </div>
+            <div class="select-wrap">
+              <select id="sort" class="input select">
+                <option value="popular">Paling populer</option>
+                <option value="termurah">Termurah</option>
+                <option value="termahal">Termahal</option>
+                <option value="stok">Stok terbanyak</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div id="grid" class="grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      &copy; <span id="year"></span> Neon Mart — dibuat dengan ❤️. | <a href="admin.html">Admin</a>
+    </footer>
+  </main>
+
+  <aside id="drawer" class="drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <div style="font-weight:800">Keranjang</div>
+      <button id="close-drawer" class="btn ghost">Tutup</button>
+    </div>
+    <div class="drawer-body">
+      <div id="cart-list" class="cart-list"></div>
+    </div>
+    <div class="cart-footer">
+      <div style="display:flex;justify-content:space-between;font-weight:800">
+        <span>Total</span>
+        <span id="cart-total">Rp0</span>
+      </div>
+      <button class="btn">Checkout (Demo)</button>
+      <div class="mini" style="color:var(--text-2)">* Demo tanpa pembayaran.</div>
+    </div>
+  </aside>
+
+  <div class="toast" style="display:none"></div>
+
+  <script>document.querySelector('#year').textContent = new Date().getFullYear()</script>
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>
